@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.htc.patientmanagement.dao.PatientRepository;
@@ -23,7 +24,7 @@ public class PatientController {
 	@Autowired
 	private PatientRepository patientRepository;
 	
-	@GetMapping("/products")
+	@GetMapping("/patients")
 	public List<Patient> getAllPatients(){
 		return patientRepository.findAll();
 	}
@@ -38,36 +39,24 @@ public class PatientController {
 		
 	}
 	
-//	@GetMapping("/patients/{firstName}") 
-//    public List<Patient> getPatientfirstName(@PathVariable String firstName) {
-//		
-//		Patient patient =null;
-//		patient = patientRepository.
-//		return patient;
-//		
-//	}
-//	
-//	@GetMapping("/patients/{lastName}") 
-//	public List<Patient> getPatientBylastName(@PathVariable(name="lastName") String lastName) {
-//		List<Patient> patient = null;
-//		try {
-//			patient = ipatientservice.getByLastName(lastName);
-//		} catch (PatientNotFound e) {
-//			System.out.println(e.getErrorMessage());
-//		}
-//		return patient;
-//	}
-//	
-//	@GetMapping("/patients/{mobile}") 
-//	public List<Patient> getByMobile(@PathVariable(name="mobile") long mobile) {
-//		List<Patient> patient = null;
-//		try {
-//			patient = ipatientservice.getByMobile(mobile);
-//		} catch (PatientNotFound e) {
-//			System.out.println(e.getErrorMessage());
-//		}
-//		return patient;
-//	}
+	@GetMapping("/patients/{firstName}") 
+    public Patient getPatientfirstName(@RequestParam String firstName) {
+		
+		return patientRepository.findByFirst_name(firstName);
+	}
+
+	@GetMapping("/patients/{lastName}") 
+    public Patient getPatientlastName(@RequestParam String lastName) {
+		
+		return patientRepository.findByLast_name(lastName);
+	}
+	
+	@GetMapping("/patients/{mobile}") 
+    public Patient getPatientmobile(@RequestParam long mobile) {
+		
+		return patientRepository.findByMobile(mobile);
+	}
+
 	
 	@PostMapping("/patients/create") 
 	public Patient createProduct(@RequestBody Patient patient) {

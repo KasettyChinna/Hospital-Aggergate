@@ -3,47 +3,34 @@ package com.htc.patientmanagement.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class Patient implements Serializable{
 
-@Entity
-@Table(name = "Patient")
-public class Patient implements Serializable {
-
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1076539590371118492L;
+	private static final long serialVersionUID = -4483776113202186582L;
 	
-	@Id
+	
 	private long patientId;
 	private String firstName;
 	private String lastName;
-	private String gender;
-	private long mobile;
+	private long mobileNumber;
 	private String disease;
-	private String address;
 	
 	public Patient() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	
-
-	public Patient(long patientId, String firstName, String lastName, String gender, long mobile, String disease,
-			String address) {
+	public Patient(long patientId, String firstName, String lastName, long mobileNumber, String disease) {
 		super();
 		this.patientId = patientId;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.gender = gender;
-		this.mobile = mobile;
-		this.setDisease(disease);
-		this.address = address;
+		this.mobileNumber = mobileNumber;
+		this.disease = disease;
 	}
-
-
 
 	public long getPatientId() {
 		return patientId;
@@ -69,40 +56,25 @@ public class Patient implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public String getGender() {
-		return gender;
+	public long getMobileNumber() {
+		return mobileNumber;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public long getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(long mobile) {
-		this.mobile = mobile;
+	public void setMobileNumber(long mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
 
 	public String getDisease() {
 		return disease;
 	}
-	
+
 	public void setDisease(String disease) {
 		this.disease = disease;
-	}
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(patientId);
+		return Objects.hash(disease, mobileNumber, patientId);
 	}
 
 	@Override
@@ -114,18 +86,14 @@ public class Patient implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Patient other = (Patient) obj;
-		return patientId == other.patientId;
+		return Objects.equals(disease, other.disease) && mobileNumber == other.mobileNumber
+				&& patientId == other.patientId;
 	}
-
-
 
 	@Override
 	public String toString() {
-		return "Patient [patientId=" + patientId + ", firstName=" + firstName + ", lastName=" + lastName + ", gender="
-				+ gender + ", mobile=" + mobile + ", disease=" + disease + ", address=" + address + "]";
+		return "Patient [patientId=" + patientId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", mobileNumber=" + mobileNumber + ", disease=" + disease + "]";
 	}
-
 	
-	
-
 }

@@ -69,7 +69,7 @@ public class PatientController {
 		return patientRepository.findById(patientId)
 				.map(patient ->{
 					patient.setDisease(newpatient.getDisease());
-					patient.setAddress(newpatient.getAddress());
+					
 					return patientRepository.save(patient);
 				})
 				.orElseGet(() -> {

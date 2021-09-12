@@ -1,10 +1,10 @@
-package com.htc.patientmanagement;
+package com.htc.discoveryserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PatientManagementApplicationTests {
+class DiscoveryServerApplicationTests {
 
 	@Test
 	void contextLoads() {

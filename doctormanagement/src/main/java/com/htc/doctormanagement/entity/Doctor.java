@@ -17,7 +17,8 @@ public class Doctor implements Serializable {
 	@Id
 	private long doctorId;
 	private String doctorName;
-	private long appointmentId;
+	private long appointmentId;//should be seperate
+	//doctor depart
 	private LocalDate appointmentDate;
 	public Doctor() {
 		super();

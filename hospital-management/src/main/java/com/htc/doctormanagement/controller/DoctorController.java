@@ -1,4 +1,4 @@
-package com.htc.hospitalmanagement.controller;
+package com.htc.doctormanagement.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,43 +13,43 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.htc.hospitalmanagement.dao.HospitalInterface;
-import com.htc.hospitalmanagement.entity.Hospital;
-import com.htc.hospitalmanagement.service.HospitalServices;
+import com.htc.doctormanagement.dao.DoctorInterface;
+import com.htc.doctormanagement.entity.Doctor;
+import com.htc.doctormanagement.service.DoctorServices;
 @RestController
-public class HospitalController {
+public class DoctorController {
 	@Autowired
-	private HospitalInterface hospitalInterface;
+	private DoctorInterface hospitalInterface;
 	
 	@Autowired
-	private HospitalServices hospitalServices;
+	private DoctorServices hospitalServices;
 
 
 	@PostMapping("/hospital")
-	public Hospital insertInfo(@RequestBody Hospital hospital)
+	public Doctor insertInfo(@RequestBody Doctor hospital)
 	{
 		return hospitalServices.insert(hospital);
 		
 	}
 	
 	 @GetMapping("/hospital")
-	  public List<Hospital> getAllInfo() {
+	  public List<Doctor> getAllInfo() {
 	   
-	    List<Hospital> hospitallist = hospitalInterface.findAll();
+	    List<Doctor> hospitallist = hospitalInterface.findAll();
 	    return hospitallist;
 	  }
 	 
-	 @GetMapping("/hospital/{appointmentId}")
-		public Hospital getByappointmentId(@PathVariable Long appointmentId)
+	 @GetMapping("/hospital/{doctorId}")
+		public Doctor getBydoctorId(@PathVariable Long doctorId)
 		{
-			Hospital doctor=null;
-			doctor=hospitalInterface.findById(appointmentId).get();
+			Doctor doctor=null;
+			doctor=hospitalInterface.findById(doctorId).get();
 			return doctor;
 			
 		}
 		
 		@PutMapping("/hospital/{appointmentId}")
-		public Hospital updateDoctor(@RequestBody Hospital changes, @PathVariable long appointmentId) {
+		public Doctor updateDoctor(@RequestBody Doctor changes, @PathVariable long appointmentId) {
 			return hospitalInterface.findById(appointmentId)
 					.map(doctor ->{
 						doctor.setDoctorName(changes.getDoctorName());

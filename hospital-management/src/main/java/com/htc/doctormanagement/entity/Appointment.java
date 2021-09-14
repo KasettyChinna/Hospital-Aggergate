@@ -1,4 +1,4 @@
-package com.htc.hospitalmanagement.entity;
+package com.htc.doctormanagement.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

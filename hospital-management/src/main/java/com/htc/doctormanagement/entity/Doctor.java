@@ -1,4 +1,4 @@
-package com.htc.hospitalmanagement.entity;
+package com.htc.doctormanagement.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -8,18 +8,21 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="HOSPITAL")
-public class Hospital implements Serializable{
+public class Doctor implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1556626358948348787L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long doctorId;
 	private String doctorName;
 	private String department;
@@ -27,12 +30,12 @@ public class Hospital implements Serializable{
 	@OneToMany(targetEntity = Appointment.class,cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Appointment> appointment;
 	
-	public Hospital() {
+	public Doctor() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Hospital(long doctorId, String doctorName, String department) {
+	public Doctor(long doctorId, String doctorName, String department) {
 		super();
 		this.doctorId = doctorId;
 		this.doctorName = doctorName;
@@ -86,7 +89,7 @@ public class Hospital implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Hospital other = (Hospital) obj;
+		Doctor other = (Doctor) obj;
 		return doctorId == other.doctorId;
 	}
 

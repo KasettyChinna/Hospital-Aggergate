@@ -18,7 +18,6 @@ import com.htc.patientmanagement.model.Patient;
 
 
 @RestController
-@RequestMapping("/api")
 public class PatientController {
 
 	@Autowired

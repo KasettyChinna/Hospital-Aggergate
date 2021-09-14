@@ -22,13 +22,13 @@ public class DoctorController {
 	private DoctorInterface hospitalInterface;
 	
 	@Autowired
-	private DoctorServices hospitalServices;
+	private DoctorServices doctorServices;
 
 
 	@PostMapping("/hospital")
 	public Doctor insertInfo(@RequestBody Doctor hospital)
 	{
-		return hospitalServices.insert(hospital);
+		return doctorServices.insert(hospital);
 		
 	}
 	

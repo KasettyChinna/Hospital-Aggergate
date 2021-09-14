@@ -17,7 +17,7 @@ public class Hospital_Aggregate implements Serializable{
 	private long mobileNumber;
 	private String disease;
 	
-	private List<Hospital> hospital;
+	private List<Doctor> hospital;
 
 	public Hospital_Aggregate() {
 		super();
@@ -25,7 +25,7 @@ public class Hospital_Aggregate implements Serializable{
 	}
 
 	public Hospital_Aggregate(long patientId, String firstName, String lastName, long mobileNumber, String disease,
-			List<Hospital> hospital) {
+			List<Doctor> hospital) {
 		super();
 		this.patientId = patientId;
 		this.firstName = firstName;
@@ -75,11 +75,11 @@ public class Hospital_Aggregate implements Serializable{
 		this.disease = disease;
 	}
 
-	public List<Hospital> getHospital() {
+	public List<Doctor> getHospital() {
 		return hospital;
 	}
 
-	public void setHospital(List<Hospital> hospital) {
+	public void setHospital(List<Doctor> hospital) {
 		this.hospital = hospital;
 	}
 

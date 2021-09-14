@@ -3,6 +3,12 @@ package com.htc.patientmanagement.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Patient")
 public class Patient implements Serializable{
 
 	
@@ -11,11 +17,11 @@ public class Patient implements Serializable{
 	 */
 	private static final long serialVersionUID = -4483776113202186582L;
 	
-	
+	@Id
 	private long patientId;
 	private String firstName;
 	private String lastName;
-	private long mobileNumber;
+	private long mobile;
 	private String disease;
 	
 	public Patient() {
@@ -23,12 +29,12 @@ public class Patient implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Patient(long patientId, String firstName, String lastName, long mobileNumber, String disease) {
+	public Patient(long patientId, String firstName, String lastName, long mobile, String disease) {
 		super();
 		this.patientId = patientId;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.mobileNumber = mobileNumber;
+		this.mobile = mobile;
 		this.disease = disease;
 	}
 
@@ -56,12 +62,12 @@ public class Patient implements Serializable{
 		this.lastName = lastName;
 	}
 
-	public long getMobileNumber() {
-		return mobileNumber;
+	public long getMobile() {
+		return mobile;
 	}
 
-	public void setMobileNumber(long mobileNumber) {
-		this.mobileNumber = mobileNumber;
+	public void setMobile(long mobile) {
+		this.mobile = mobile;
 	}
 
 	public String getDisease() {
@@ -74,7 +80,7 @@ public class Patient implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(disease, mobileNumber, patientId);
+		return Objects.hash(disease, mobile, patientId);
 	}
 
 	@Override
@@ -86,14 +92,14 @@ public class Patient implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Patient other = (Patient) obj;
-		return Objects.equals(disease, other.disease) && mobileNumber == other.mobileNumber
+		return Objects.equals(disease, other.disease) && mobile == other.mobile
 				&& patientId == other.patientId;
 	}
 
 	@Override
 	public String toString() {
 		return "Patient [patientId=" + patientId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", mobileNumber=" + mobileNumber + ", disease=" + disease + "]";
+				+ ", mobileNumber=" + mobile + ", disease=" + disease + "]";
 	}
 	
 }
